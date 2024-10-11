@@ -1,5 +1,5 @@
-{% set name = "<PLEASE ADD PKG NAME>" %}
-{% set version = "<PLEASE ADD PKG VERSION>" %}
+{% set name = "asynch" %}
+{% set version = "0.2.4" %}
 
 package:
   name: {{ name|lower }}
