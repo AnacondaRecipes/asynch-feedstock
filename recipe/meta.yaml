@@ -18,6 +18,9 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
+    - poetry-core
   run:
     - python
 
