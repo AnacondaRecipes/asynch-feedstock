@@ -23,19 +23,20 @@ requirements:
     - poetry-core
   run:
     - python
-
-test:
-  imports:
-    - {{ name.replace('-', '.') }}
-  requires:
-    - pip
     - leb128
     - pytz
     - lz4
-    - clickhouse-cityhash
     - zstd
     - tzlocal
     - ciso8601
+  run_constrained:
+    - clickhouse-cityhash
+
+test:
+  imports:
+    - asynch
+  requires:
+    - pip
   commands:
     - pip check
 
