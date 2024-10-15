@@ -21,6 +21,7 @@ requirements:
     - setuptools
     - wheel
     - poetry-core
+    - zstd
   run:
     - python
     - leb128
