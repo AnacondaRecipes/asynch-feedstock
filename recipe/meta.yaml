@@ -21,13 +21,12 @@ requirements:
     - setuptools
     - wheel
     - poetry-core
-    - zstd
   run:
     - python
     - leb128
     - pytz
     - lz4
-    - zstd
+    - python-zstd
     - tzlocal
     - ciso8601
   run_constrained:
