@@ -1,5 +1,5 @@
-{% set name = "<PLEASE ADD PKG NAME>" %}
-{% set version = "<PLEASE ADD PKG VERSION>" %}
+{% set name = "asynch" %}
+{% set version = "0.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: <sha256>
+  sha256: 15ef9517bb093dfd5a0f1f31cc31e0da84543eead0269345052922cf399d280e
 
 build:
   number: 0
@@ -18,27 +18,41 @@ requirements:
   host:
     - python
     - pip
+    - poetry-core
   run:
     - python
+    - leb128
+    - pytz
+    - lz4
+    - python-zstd
+    - tzlocal
+    - ciso8601
 
 test:
   imports:
-    - {{ name.replace('-', '.') }}
+    - asynch
+    - asynch.proto
+    - asynch.proto.columns
+    - asynch.proto.compression
+    - asynch.proto.settings
+    - asynch.proto.streams
+    - asynch.proto.utils
   requires:
     - pip
   commands:
     - pip check
 
 about:
-  home: <PLEASE ADD HOME URL>
-  summary: <PLEASE ADD SUMMARY>
+  home: https://github.com/long2ice/asynch
+  summary: An asyncio ClickHouse Python Driver with native (TCP) interface support.
   description: |
-    <PLEASE ADD DESCRIPTION>
-  license: <PLEASE ADD LICENSE>
-  license_family: <PLEASE ADD LICENSE_FAMILY>
-  license_file: <PLEASE_ADD_LICENSE_FILE>
-  dev_url: <PLEASE ADD DEV URL>
-  doc_url: <PLEASE ADD DOC URL>
+    asynch is an asynchronous ClickHouse Python driver with native TCP interface support,
+    which reuses most of clickhouse-driver features and complies with PEP249.
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  dev_url: https://github.com/long2ice/asynch
+  doc_url: https://github.com/long2ice/asynch
 
 extra:
   recipe-maintainers:
