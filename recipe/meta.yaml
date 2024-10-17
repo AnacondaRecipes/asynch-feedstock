@@ -27,8 +27,6 @@ requirements:
     - python-zstd
     - tzlocal
     - ciso8601
-    # not available on windows
-    - clickhouse-cityhash  # [unix]
 
 test:
   imports:
