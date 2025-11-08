@@ -1,18 +1,18 @@
 {% set name = "asynch" %}
-{% set version = "0.2.4" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 15ef9517bb093dfd5a0f1f31cc31e0da84543eead0269345052922cf399d280e
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5806b3df6b7ed998a427c718c7d3be73f498f234d11e3aa5b5dd50577db94516
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<38]
+  skip: true  # [py<39]
 
 requirements:
   host:
@@ -21,12 +21,13 @@ requirements:
     - poetry-core
   run:
     - python
-    - leb128
-    - pytz
-    - lz4
+    - leb128 >=1.0.8,<2.0.0
+    - pytz >=2025.1,<2026.0
+    - lz4 >=4.4.3,<5.0.0
     - python-zstd
-    - tzlocal
-    - ciso8601
+    - tzlocal >=5.3.1,<6.0.0
+    - ciso8601 >=2.3.2,<3.0.0
+    - zstd >=1.5.6.6,<2.0.0.0
 
 test:
   imports:
