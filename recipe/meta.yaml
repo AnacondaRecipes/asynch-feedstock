@@ -1,5 +1,5 @@
 {% set name = "asynch" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name }}
@@ -7,28 +7,32 @@ package:
 
 source:
   url: https://github.com/long2ice/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 08751ce97f7e1fa7c7fd038627dae1c0ec706aedd396d5ecd71d3b3b094c0955
+  sha256: ef29798b5f02d999543b7f0dffebf6de963835165d72fc5ae9ebba7e738a0bf5
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<38]
+  skip: true  # [py<311]
 
 requirements:
   host:
     - python
     - pip
-    - poetry-core >=2.0.0,<3.0.0
+    - poetry-core
+    - setuptools
+    - cython >=3.1
   run:
     - python
-    - ciso8601 >=2.3.2,<3.0.0
+    - ciso8601 >=2.3.2
     - leb128 >=1.0.8,<2.0.0
     - lz4 >=4.4.3,<5.0.0
     - pytz >=2025.1,<2026.0
-    - tzlocal >=5.3.1,<6.0.0
+    - tzlocal >=5.3.1
     - python-zstd >=1.5.6.6,<2.0.0.0
+    - tzdata  # [win]
   run_constrained:
-    - clickhouse-cityhash >=1.0.2.4,<2.0.0.0
+    - clickhouse-cityhash >=1.0.2.4
+    - lz4 >=4.4.3
 
 test:
   source_files:
